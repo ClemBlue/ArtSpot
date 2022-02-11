@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Détails de l'oeuvre</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="list"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <article class="oeuvre" *ngIf="!loading; else loader">
+    <div *ngIf="oeuvres; else error">
+      <h1 class='ion-text-center'>{{oeuvres.nom}}</h1>
+      <img src={{oeuvres.image}} alt="">
+      <p class='ion-text-center'>{{oeuvres.localisation}}</p>
+      <p class='ion-text-center'>{{oeuvres.date}}</p>
+    </div>
+
+    <ng-template #error>
+      <app-error></app-error>
+    </ng-template>
+
+  </article>
+
+  <ng-template #loader>
+    <app-loader></app-loader>
+  </ng-template>
+  
+</ion-content>

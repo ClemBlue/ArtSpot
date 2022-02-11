@@ -25,3 +25,14 @@
 #container a {
   text-decoration: none;
 }
+
+.home-buttons{
+  display: flex;
+  flex-direction: column;
+  padding: 5rem ;
+  align-items: center;
+}
+
+.home-buttons :first-child{
+  margin-bottom: 5rem;
+}

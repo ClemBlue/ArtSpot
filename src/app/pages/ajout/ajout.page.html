@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Ajout d'une oeuvre</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <article class="form">
+    <form #oeuvresForm="ngForm" (ngSubmit)="save()">
+      <ion-item>
+        <ion-label>Nom</ion-label>
+        <ion-input [(ngModel)]="oeuvres.nom" name="nom" required
+                  minlength="3" maxlength="50" #name="ngModel"></ion-input>
+      </ion-item>
+      <app-error *ngIf="!nom.valid && nom.touched"
+                    message="Le nom doit être entre 3 et 50 charatères"></app-error>
+
+      <ion-item>
+          <ion-label>URL de l'image</ion-label>
+          <ion-input [(ngModel)]="oeuvres.image" name="image" required
+                    pattern="https://.*" #picture="ngModel"></ion-input>
+      </ion-item>
+      <app-error *ngIf="!image.valid && image.touched"
+                    message="Vous devez saisir une URL valide"></app-error>
+
+      <ion-item>
+          <ion-label>Localisation</ion-label>
+          <ion-input [(ngModel)]="oeuvres.localisation" name="localisation" required
+                        minlength="5" maxlength="100" #description="ngModel"></ion-input>
+      </ion-item>
+      <app-error *ngIf="!localisation.valid && localisation.touched"
+                    message="Le nom doit être entre 5 et 100 charatères"></app-error>
+
+      <ion-item>
+          <ion-label>Date d'ajout</ion-label>
+          <ion-input [(ngModel)]="oeuvres.date" name="date" required
+                        minlength="8" maxlength="10" #description="ngModel"></ion-input>
+      </ion-item>
+      <app-error *ngIf="!date.valid && date.touched"
+                    message="La date doit être du format jj/mm/aaaa"></app-error>
+
+      <ion-button type="submit" size="large" [disabled]="!oeuvreForm.form.valid">Ajouter</ion-button>
+
+    </form>
+  </article>
+
+</ion-content>
